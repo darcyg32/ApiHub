@@ -1,3 +1,8 @@
+// This class represents the User table in the database
+// Spring Boot + JPA automatically creates the table with columns 'id', 'username', 'email'.
+// We don't write SQL yet. JPA handles this for us.
+// Fields without annotations are automatically mapped to table columns.
+
 package com.darcy.apiHub.apihub.models;
 
 // Import annotations from Jakarta Persistence API (JPA)
