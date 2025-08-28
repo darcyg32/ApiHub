@@ -11,9 +11,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 // @Entity tells Spring Boot and JPA that this class represents a database table
 @Entity
+// @Table lets us specify the actual table name in the database
+// We'll call it "users" instead of "user" to avoid reserved keywork conflicts
+@Table(name = "users")
 public class User {
 
     // @Id marks this field as the primary key of the table
