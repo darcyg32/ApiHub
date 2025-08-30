@@ -2,7 +2,6 @@ package com.darcy.apiHub.apihub.controllers;
 
 import com.darcy.apiHub.apihub.dtos.ApiEntryDTO;
 import com.darcy.apiHub.apihub.models.ApiEntry;
-import com.darcy.apiHub.apihub.repositories.ApiEntryRepository;
 import com.darcy.apiHub.apihub.services.ApiEntryService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
