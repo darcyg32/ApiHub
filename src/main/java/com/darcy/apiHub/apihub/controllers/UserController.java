@@ -1,46 +1,55 @@
-// Controllers handle HTTP requests from the frontend or Postman
-// /users is the base path, so GET /users and POST /users works automatically
-// Spring automatically handles JSON serialization/deserialization
-// Dependency injection avoids manually creating UserRepository instances
-
 package com.darcy.apiHub.apihub.controllers;
 
-// Import User model and repository
+import com.darcy.apiHub.apihub.dtos.UserDTO;
 import com.darcy.apiHub.apihub.models.User;
-import com.darcy.apiHub.apihub.repositories.UserRepository;
-
-// Spring Web annotations
+import com.darcy.apiHub.apihub.services.UserService;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-// @RestController tells Spring Boot: this class handles HTTP requests
-// All return values are automatically converted to JSON
 @RestController
-// Base URL for all endpoints in this controller
 @RequestMapping("/users")
 public class UserController {
 
-    // Dependency injection: Spring will provide an instance of UserRepository automatically
-    private final UserRepository userRepository;
+    private final UserService userService;
 
-    // Constructor injection is preferred in Spring Boot
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
-    // GET /users --> return all users
-    @GetMapping
-    public List<User> getAllUsers() {
-        // userRepository.findAll() queries the User table and returns all rows
-        return userRepository.findAll();
-    }
-
-    // POST /users --> create a new user
     @PostMapping
-    public User createUser(@RequestBody User user) {
-        // @RequestBody tells Spring to convert JSON in the request into a User object
-        // userRepository.save(user) inserts the user into the database
-        return userRepository.save(user);
+    public ResponseEntity<User> createUser(@Valid @RequestBody UserDTO userDTO) {
+        User user = userService.createUser(userDTO);
+        return ResponseEntity.ok(user);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<User>> getAllUsers() {
+        return ResponseEntity.ok(userService.getAllUsers());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getUserById(@PathVariable Long id) {
+        return userService.getUserById(id)
+                .<ResponseEntity<?>>map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.status(404).body("User not found"));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> updateUser(@PathVariable Long id, @Valid @RequestBody UserDTO updates) {
+        return userService.updateUser(id, updates)
+                .<ResponseEntity<?>>map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.status(404).body("User not found"));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable Long id) {
+        if (userService.deleteUser(id)) {
+            return ResponseEntity.ok("User deleted successfully");
+        } else {
+            return ResponseEntity.status(404).body("User not found");
+        }
     }
 }
