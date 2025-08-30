@@ -1,40 +1,30 @@
-// This class represents the User table in the database
-// Spring Boot + JPA automatically creates the table with columns 'id', 'username', 'email'.
-// We don't write SQL yet. JPA handles this for us.
-// Fields without annotations are automatically mapped to table columns.
-
 package com.darcy.apiHub.apihub.models;
 
-// Import annotations from Jakarta Persistence API (JPA)
-// JPA lets us map Java classes to database tables automatically
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
-// @Entity tells Spring Boot and JPA that this class represents a database table
 @Entity
-// @Table lets us specify the actual table name in the database
-// We'll call it "users" instead of "user" to avoid reserved keywork conflicts
 @Table(name = "users")
 public class User {
 
-    // @Id marks this field as the primary key of the table
     @Id
-    // @GeneratedValue tells JPA to auto-generate the ID values
-    // strategy = GenerationType.IDENTITY is commonly used for auto-increment columns
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Fields for our user
+    @NotBlank(message = "Username is required")
     private String username;
+
+    @Email(message = "Email should be valid")
     private String email;
 
     // Getters and setters
     public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
+
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
 }
