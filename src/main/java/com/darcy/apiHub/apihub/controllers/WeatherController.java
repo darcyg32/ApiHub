@@ -26,6 +26,6 @@ public class WeatherController {
             lat = -34.93;
             lon = 138.60;
         }
-        return Response.ok(service.getCurrent(lat, lon));
+        return ResponseEntity.ok(service.getCurrent(lat, lon));
     }
 }
