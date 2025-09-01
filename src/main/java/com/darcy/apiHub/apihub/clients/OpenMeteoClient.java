@@ -40,7 +40,7 @@ public class OpenMeteoClient {
 
         public static class CurrentWeather {
             public Double temperature;
-            public Double windSpeed;
+            public Double windspeed;
             public String time;
         }
     }

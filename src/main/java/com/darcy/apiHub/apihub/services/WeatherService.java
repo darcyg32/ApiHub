@@ -20,7 +20,7 @@ public class WeatherService {
                 resp != null ? resp.latitude : lat,
                 resp != null ? resp.longitude : lon,
                 cw != null ? cw.temperature : null,
-                cw != null ? cw.windSpeed : null,
+                cw != null ? cw.windspeed : null,
                 cw != null ? cw.time : null
         );
     }
