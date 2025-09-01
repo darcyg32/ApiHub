@@ -37,7 +37,7 @@ public class UserController {
                 .orElseGet(() -> ResponseEntity.status(404).body("User not found"));
     }
 
-    @GetMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> updateUser(@PathVariable Long id, @Valid @RequestBody UserDTO updates) {
         return userService.updateUser(id, updates)
                 .<ResponseEntity<?>>map(ResponseEntity::ok)
