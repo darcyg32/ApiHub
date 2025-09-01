@@ -9,14 +9,12 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 public class OpenMeteoClient {
 
     private final WebClient client;
-    private final UrlBasedViewResolver urlBasedViewResolver;
 
     public OpenMeteoClient(WebClient.Builder builder, UrlBasedViewResolver urlBasedViewResolver) {
         // No API key required
         this.client = builder
                 .baseUrl("https://api.open-meteo.com/v1")
                 .build();
-        this.urlBasedViewResolver = urlBasedViewResolver;
     }
 
     public OpenMeteoResponse getCurrent(double lat, double lon) {
