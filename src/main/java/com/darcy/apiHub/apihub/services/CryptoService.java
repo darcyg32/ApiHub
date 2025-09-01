@@ -4,8 +4,6 @@ import com.darcy.apiHub.apihub.clients.CoinGeckoClient;
 import com.darcy.apiHub.apihub.dtos.CryptoPriceDTO;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
-
 @Service
 public class CryptoService {
 
@@ -16,15 +14,20 @@ public class CryptoService {
     }
 
     public CryptoPriceDTO getBTCandETHinAUD() {
-        Map<String, Map<String, Double>> resp = coinGeckoClient.getSimplePrice("bitcoin,ethereum", "aud");
+        CoinGeckoClient.CoinGeckoResponse resp = coinGeckoClient.getSimplePrice("bitcoin,ethereum", "aud");
+
+        if (resp == null || resp.getPrices() == null) {
+            return new CryptoPriceDTO(null, null);
+        }
+
         Double btc = extract(resp, "bitcoin", "aud");
         Double eth = extract(resp, "ethereum", "aud");
+
         return new CryptoPriceDTO(btc, eth);
     }
 
-    private Double extract(Map<String, Map<String, Double>> m, String id, String cur) {
-        if (m == null) return null;
-        var inner = m.get(id);
+    private Double extract(CoinGeckoClient.CoinGeckoResponse resp, String id, String cur) {
+        var inner = resp.getPrices().get(id);
         if (inner == null) return null;
         return inner.get(cur);
     }

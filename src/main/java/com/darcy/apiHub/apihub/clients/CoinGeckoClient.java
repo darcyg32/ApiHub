@@ -1,8 +1,10 @@
 package com.darcy.apiHub.apihub.clients;
 
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Component
@@ -16,8 +18,7 @@ public class CoinGeckoClient {
                 .build();
     }
 
-    @SuppressWarnings("unchecked")
-    public Map<String, Map<String, Double>> getSimplePrice(String idsCsv, String vsCurrenciesCsv) {
+    public CoinGeckoResponse getSimplePrice(String idsCsv, String vsCurrenciesCsv) {
         return client.get()
                 .uri(uri -> uri
                         .path("/simple/price")
@@ -25,7 +26,20 @@ public class CoinGeckoClient {
                         .queryParam("vs_currencies", vsCurrenciesCsv)
                         .build())
                 .retrieve()
-                .bodyToMono(Map.class)
+                .bodyToMono(CoinGeckoResponse.class)
                 .block();
+    }
+
+    public static class CoinGeckoResponse {
+        private Map<String, Map<String, Double>> prices = new HashMap<>();
+
+        @JsonAnySetter
+        public void setPrice(String key, Map<String, Double> value) {
+            prices.put(key, value);
+        }
+
+        public Map<String, Map<String, Double>> getPrices() {
+            return prices;
+        }
     }
 }
