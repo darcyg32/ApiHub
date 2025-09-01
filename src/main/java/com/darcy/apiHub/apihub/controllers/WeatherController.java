@@ -2,7 +2,6 @@ package com.darcy.apiHub.apihub.controllers;
 
 import com.darcy.apiHub.apihub.dtos.WeatherDTO;
 import com.darcy.apiHub.apihub.services.WeatherService;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
