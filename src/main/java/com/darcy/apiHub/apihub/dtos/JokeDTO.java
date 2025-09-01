@@ -15,5 +15,5 @@ public class JokeDTO {
     public void setSetup(String setup) { this.setup = setup; }
 
     public String getPunchline() { return this.punchline; }
-    public String setPunchline(String punchline) { this.punchline = punchline; }
+    public void setPunchline(String punchline) { this.punchline = punchline; }
 }
