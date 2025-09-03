@@ -40,9 +40,6 @@ export default function WeatherPanel() {
                         <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
                             Weather
                         </h2>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
-                            Location-based forecast
-                        </p>
                     </div>
                 </div>
 
@@ -93,27 +90,22 @@ export default function WeatherPanel() {
                     <Info
                         label="Latitude"
                         value={data?.latitude != null ? data.latitude.toFixed(2) : '—'}
-                        icon="📍"
                     />
                     <Info
                         label="Longitude"
                         value={data?.longitude != null ? data.longitude.toFixed(2) : '—'}
-                        icon="📍"
                     />
                     <Info
                         label="Temperature"
                         value={data?.temperature != null ? `${data.temperature.toFixed(1)}°C` : '—'}
-                        icon="🌡️"
                     />
                     <Info
                         label="Wind Speed"
                         value={data?.windspeed != null ? `${data.windspeed.toFixed(1)} km/h` : '—'}
-                        icon="💨"
                     />
                     <Info
                         label="Last Updated"
                         value={formattedTime}
-                        icon="🕐"
                         className="col-span-1 sm:col-span-2"
                     />
                 </div>
@@ -125,18 +117,15 @@ export default function WeatherPanel() {
 function Info({
     label,
     value,
-    icon,
     className = '',
 }: {
     label: string;
     value?: string | number;
-    icon?: string;
     className?: string;
 }) {
     return (
         <div className={`rounded-lg bg-gray-50 p-4 dark:bg-gray-800 ${className}`}>
             <div className="mb-2 flex items-center gap-2">
-                {icon && <span className="text-base">{icon}</span>}
                 <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
                     {label}
                 </span>

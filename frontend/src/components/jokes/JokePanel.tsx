@@ -34,9 +34,6 @@ export default function JokePanel() {
                         <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
                             Random Joke
                         </h2>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
-                            Daily dose of humor
-                        </p>
                     </div>
                 </div>
 
@@ -52,7 +49,6 @@ export default function JokePanel() {
                     {/* Setup */}
                     <div className="rounded-lg bg-gray-50 p-4 dark:bg-gray-800">
                         <div className="mb-2 flex items-center gap-2">
-                            <span className="text-base">🎭</span>
                             <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
                                 Setup
                             </span>
@@ -63,7 +59,6 @@ export default function JokePanel() {
                     {/* Punchline */}
                     <div className="rounded-lg bg-gray-50 p-4 dark:bg-gray-800">
                         <div className="mb-2 flex items-center gap-2">
-                            <span className="text-base">💥</span>
                             <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
                                 Punchline
                             </span>
