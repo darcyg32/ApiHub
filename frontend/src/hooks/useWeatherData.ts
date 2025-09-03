@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { weatherApi } from '../utils/api.ts';
+import { useState, useEffect, useCallback } from 'react';
+import { weatherApi } from '../utils/api';
 import type { WeatherData } from '../types';
 
 export function useWeatherData(lat: number, lon: number) {
@@ -9,7 +9,7 @@ export function useWeatherData(lat: number, lon: number) {
         error: null
     });
 
-    const fetchData = async (latitude = lat, longitude = lon) => {
+    const fetchData = useCallback(async (latitude = lat, longitude = lon) => {
         setState(prev => ({ ...prev, loading: true, error: null }));
         try {
             const result = await weatherApi.getWeather(latitude, longitude);
@@ -21,11 +21,11 @@ export function useWeatherData(lat: number, lon: number) {
                 error: error instanceof Error ? error.message : 'Failed to fetch weather'
             });
         }
-    };
+    }, [lat, lon]);
 
     useEffect(() => {
         void fetchData(lat, lon);
-    }, [lat, lon]);
+    }, [fetchData, lat, lon]);
 
     return { ...state, refetch: fetchData };
 }
