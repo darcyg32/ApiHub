@@ -4,6 +4,9 @@ export interface WeatherDTO {
     temperature: number | null;
     windspeed: number | null;
     timeISO: string | null;
+    timezone?: string | null;
+    timezoneAbbreviation?: string | null;
+    utcOffsetSeconds?: number | null;
 }
 
 export interface WeatherData {

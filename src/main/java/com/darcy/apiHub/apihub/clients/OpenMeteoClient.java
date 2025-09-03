@@ -24,6 +24,7 @@ public class OpenMeteoClient {
                         .queryParam("latitude", lat)
                         .queryParam("longitude", lon)
                         .queryParam("current_weather", "true")
+                        .queryParam("timezone", "auto")
                         .build())
                 .retrieve()
                 .bodyToMono(OpenMeteoResponse.class)
@@ -33,6 +34,11 @@ public class OpenMeteoClient {
     public static class OpenMeteoResponse {
         public double latitude;
         public double longitude;
+        public String timezone;
+        @JsonProperty("timezone_abbreviation")
+        public String timezoneAbbreviation;
+        @JsonProperty("utc_offset_seconds")
+        public Integer utcOffsetSeconds;
         @JsonProperty("current_weather")
         public CurrentWeather currentWeather;
 

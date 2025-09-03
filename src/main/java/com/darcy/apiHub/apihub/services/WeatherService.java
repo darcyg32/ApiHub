@@ -21,7 +21,10 @@ public class WeatherService {
                 resp != null ? resp.longitude : lon,
                 cw != null ? cw.temperature : null,
                 cw != null ? cw.windspeed : null,
-                cw != null ? cw.time : null
+                cw != null ? cw.time : null,
+                resp != null ? resp.timezone : null,
+                resp != null ? resp.timezoneAbbreviation : null,
+                resp != null ? resp.utcOffsetSeconds : null
         );
     }
 }

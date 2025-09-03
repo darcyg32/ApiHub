@@ -9,6 +9,12 @@ export default function WeatherPanel() {
     const [lon, setLon] = useState<number>(138.6);
     const { data, loading, error, refetch } = useWeatherData(lat, lon);
 
+    const formattedTime = data?.timeISO
+        ? new Date(data.timeISO).toLocaleString(undefined, {
+              timeZoneName: data?.timezoneAbbreviation ? undefined : 'short',
+          }) + (data?.timezoneAbbreviation ? ` ${data.timezoneAbbreviation}` : '')
+        : '—';
+
     return (
         <section className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
             <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -106,7 +112,7 @@ export default function WeatherPanel() {
                     />
                     <Info
                         label="Last Updated"
-                        value={data?.timeISO ? new Date(data.timeISO).toLocaleString() : '—'}
+                        value={formattedTime}
                         icon="🕐"
                         className="col-span-1 sm:col-span-2"
                     />
