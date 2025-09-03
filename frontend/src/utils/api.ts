@@ -13,14 +13,14 @@ async function fetchApi<T>(endpoint: string): Promise<T> {
 
 // Specific API calls
 export const cryptoApi = {
-    getPrices: () => fetchApi<import('../types').CryptoPriceDTO>('/crypto')
+    getPrices: () => fetchApi<import('../types').CryptoPriceDTO>('/crypto'),
 };
 
 export const weatherApi = {
     getWeather: (lat: number, lon: number) =>
-        fetchApi<import('../types').WeatherDTO>(`/weather?lat=${lat}&lon=${lon}`)
+        fetchApi<import('../types').WeatherDTO>(`/weather?lat=${lat}&lon=${lon}`),
 };
 
 export const jokeApi = {
-    getRandomJoke: () => fetchApi<import('../types').JokeDTO>('/joke')
+    getRandomJoke: () => fetchApi<import('../types').JokeDTO>('/joke'),
 };

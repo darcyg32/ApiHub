@@ -6,19 +6,19 @@ export function useJokeData() {
     const [state, setState] = useState<JokeData>({
         data: null,
         loading: false,
-        error: null
+        error: null,
     });
 
     const fetchData = async () => {
-        setState(prev => ({...prev, loading: true, error: null}));
+        setState((prev) => ({ ...prev, loading: true, error: null }));
         try {
             const result = await jokeApi.getRandomJoke();
-            setState({ data: result, loading: false, error: null});
+            setState({ data: result, loading: false, error: null });
         } catch (error) {
             setState({
                 data: null,
                 loading: false,
-                error: error instanceof Error ? error.message : 'Failed to fetch joke'
+                error: error instanceof Error ? error.message : 'Failed to fetch joke',
             });
         }
     };
