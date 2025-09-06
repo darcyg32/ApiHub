@@ -2,6 +2,12 @@
 
 A small full‑stack demo showing a Spring Boot (Java 17, Gradle) backend that aggregates public APIs and a Vite + React + TypeScript frontend. It demonstrates REST design, WebClient (reactive HTTP), validation, simple security, JPA/H2, and a modern React UI with Tailwind.
 
+### Screenshot
+
+![ApiHub Frontend](docs/images/screenshot.png)
+
+_The main dashboard showing crypto prices, weather data, and jokes_
+
 ### Index
 
 - [Stack](#stack)
