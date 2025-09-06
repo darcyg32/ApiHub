@@ -25,7 +25,7 @@ A small full‑stack demo showing a Spring Boot (Java 17, Gradle) backend that a
 ### Architecture
 
 - Monorepo layout
-  - Backend: `src/main/java/com/darcy/apiHub/apihub/**`
+  - Backend: `src/main/java/com/darcy/apihub/**`
   - Frontend: `frontend/**`
 - Responsibilities
   - Controllers: `controllers/*` define REST endpoints under `/api/**`, `/users/**`, `/api-entries/**`
@@ -144,7 +144,7 @@ Open `http://localhost:5173`.
 
 ```bash
 ./gradlew build
-# outputs: build/libs/apihub-0.0.1-SNAPSHOT.jar
+# outputs: build/libs/ApiHub-0.0.1-SNAPSHOT.jar
 ```
 
 - Frontend production build:
