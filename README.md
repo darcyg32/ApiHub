@@ -1,6 +1,23 @@
 ## ApiHub — Spring Boot + React Demo
 
+[![Java](https://img.shields.io/badge/Java-17-orange?style=flat-square&logo=openjdk)](https://openjdk.org/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.5-brightgreen?style=flat-square&logo=spring)](https://spring.io/projects/spring-boot)
+[![React](https://img.shields.io/badge/React-19.1.1-blue?style=flat-square&logo=react)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8.3-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-7.1.2-646CFF?style=flat-square&logo=vite)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.1.12-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
+[![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
+
 A small full‑stack demo showing a Spring Boot (Java 17, Gradle) backend that aggregates public APIs and a Vite + React + TypeScript frontend. It demonstrates REST design, WebClient (reactive HTTP), validation, simple security, JPA/H2, and a modern React UI with Tailwind.
+
+### Why This Project?
+
+This is a demo project I built to learn modern Java + React development. I wanted to practice:
+
+- Building REST APIs with Spring Boot
+- Integrating external APIs (crypto prices, weather, jokes)
+- Creating responsive UIs with React and Tailwind
+- Working with TypeScript and modern tooling
 
 ### Screenshot
 
